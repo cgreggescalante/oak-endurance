@@ -21,12 +21,15 @@
   ],
   "emulators": {
     "auth": {
+      "host": "192.168.1.246",
       "port": 9099
     },
     "functions": {
+      "host": "192.168.1.246",
       "port": 5001
     },
     "firestore": {
+      "host": "192.168.1.246",
       "port": 8080
     },
     "ui": {
