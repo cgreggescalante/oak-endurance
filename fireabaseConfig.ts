@@ -14,6 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-connectFirestoreEmulator(db, '192.168.1.246', 8080);
+if (process.env.NODE_ENV === 'development')
+    connectFirestoreEmulator(db, '192.168.1.246', 8080);
 
 export { db }
