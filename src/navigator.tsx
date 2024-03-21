@@ -1,17 +1,17 @@
 import {NavigationContainer} from "@react-navigation/native";
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import FirestoreTest from "@/firestoreTest";
 import Home from "@/home";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="FT" component={FirestoreTest} />
-            </Stack.Navigator>
+            <Tab.Navigator>
+                <Tab.Screen name="Home" component={Home} />
+                <Tab.Screen name="Firebase Test" component={FirestoreTest} />
+            </Tab.Navigator>
         </NavigationContainer>
     )
 }

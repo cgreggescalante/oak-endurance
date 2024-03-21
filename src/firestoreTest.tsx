@@ -32,8 +32,7 @@ export default () => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadItems} /> }>
-                <Text>Hello World!</Text>
-                <StatusBar style="auto"/>
+                <Text>Adds a document to the 'test-items' collection.</Text>
                 <Button title="Add Item" onPress={addItem} />
                 <FlatList data={items} renderItem={({item}) => <Text>{item.name}</Text>}/>
             </ScrollView>
@@ -44,7 +43,6 @@ export default () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
