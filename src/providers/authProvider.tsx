@@ -21,6 +21,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return () => unsubscribe();
     }, []);
 
+    if (loading)
+        return <></>;
+
     return (
         <AuthContext.Provider value={{ user, loading }}>
             {children}
