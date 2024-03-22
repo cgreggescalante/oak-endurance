@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import {addDoc, collection, getDocs, query} from "firebase/firestore";
 import {db} from "../fireabaseConfig";
 import {Button, FlatList, RefreshControl, SafeAreaView, ScrollView, StyleSheet, Text} from "react-native";
-import {StatusBar} from "expo-status-bar";
 
 export default () => {
     const [refreshing, setRefreshing] = useState(false);
@@ -30,13 +29,11 @@ export default () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView contentContainerStyle={styles.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadItems} /> }>
-                <Text>Adds a document to the 'test-items' collection.</Text>
-                <Button title="Add Item" onPress={addItem} />
-                <FlatList data={items} renderItem={({item}) => <Text>{item.name}</Text>}/>
-            </ScrollView>
-        </SafeAreaView>
+        <ScrollView contentContainerStyle={styles.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadItems} /> }>
+            <Text>Adds a document to the 'test-items' collection.</Text>
+            <Button title="Add Item" onPress={addItem} />
+            <FlatList data={items} renderItem={({item}) => <Text>{item.name}</Text>}/>
+        </ScrollView>
     )
 }
 
