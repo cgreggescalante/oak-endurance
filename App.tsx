@@ -1,10 +1,10 @@
 import Navigator from "@/navigator";
-import {AuthProvider} from "@/providers/authProvider";
+import { AuthProvider } from "@/providers/authProvider";
 
 export default () => {
-    return (
-        <AuthProvider>
-            <Navigator />
-        </AuthProvider>
-    )
-}
+  return (
+    <AuthProvider>
+      <Navigator />
+    </AuthProvider>
+  );
+};
