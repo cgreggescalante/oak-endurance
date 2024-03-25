@@ -1,10 +1,11 @@
 import { Button, SafeAreaView, TextInput, Text } from "react-native";
 import AuthScreens from "@/styles/authScreens";
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../fireabaseConfig";
 
 export default ({ navigation }: { navigation: any }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,12 +25,17 @@ export default ({ navigation }: { navigation: any }) => {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        updateProfile(userCredential.user, { displayName: name }).catch(() =>
+          alert("Could not set name, please update in settings."),
+        );
+      })
       .catch(() => setFailed(true))
       .finally(() => setAttemptingSignup(false));
   };
 
   const validateInput = () => {
-    if (!email || !password || !confirmPassword) {
+    if (!email || !password || !confirmPassword || !name) {
       setError("All fields are required.");
       return false;
     }
@@ -50,6 +56,11 @@ export default ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={AuthScreens.container}>
       <Text>Signup</Text>
+      <TextInput
+        placeholder={"Full Name"}
+        value={name}
+        onChangeText={setName}
+      />
       <TextInput
         placeholder="Email"
         inputMode={"email"}
