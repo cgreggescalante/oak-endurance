@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
-// @ts-ignore
 import {
   connectAuthEmulator,
+  // @ts-ignore
   getReactNativePersistence,
   initializeAuth,
 } from "firebase/auth";
